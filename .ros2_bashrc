@@ -1,0 +1,4 @@
+# ROS 2 Humble user customisations 
+source /opt/ros/humble/setup.bash 
+# test if it works 
+export ROS_DOMAIN_ID=42 
