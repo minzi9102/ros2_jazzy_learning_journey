@@ -50,6 +50,10 @@
   - 向~/.bashrc 添加`source /opt/ros/humble/setup.bash`
   ```
   echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+  or(jazzy version)
+
+  echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
   ```
   - 安装UR机械臂相关驱动
   ```bash
@@ -63,6 +67,19 @@
                     ros-humble-joint-trajectory-controller \
                     ros-humble-velocity-controllers 
   注 \ 后不能有空格
+  ```
+  `Jazzy版本`
+  ```bash
+    sudo apt update
+    sudo apt install -y ros-jazzy-ur\
+                      ros-jazzy-ur-robot-driver\
+                      ros-jazzy-moveit\
+                      ros-jazzy-ur-moveit-config \
+                      ros-jazzy-ros2-control \
+                      ros-jazzy-ros2-controllers \
+                      ros-jazzy-joint-trajectory-controller \
+                      ros-jazzy-velocity-controllers 
+    注 \ 后不能有空格
   ```
 
 
@@ -177,6 +194,8 @@
       kinematics_params_file:="/ros2_workspaces/workspaces3/ur3_calibration.yaml" \
       reverse_ip:=192.168.56.1 \
       launch_rviz:=false
+
+  jazzy版本要使用use_mock_hardware:=true
 
   **启动external control urcaps：**
   
