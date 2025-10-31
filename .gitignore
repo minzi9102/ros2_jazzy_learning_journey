@@ -1,0 +1,17 @@
+# ROS 2 工作区通用忽略规则
+build/
+install/
+log/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# VSCode 设置
+.vscode/
+
+# 其他系统或编辑器生成的文件
+*.swp
+*~
+.DS_Store
