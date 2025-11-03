@@ -123,3 +123,17 @@
     ```
     
     修改完成后，VS Code 中的所有 Git 操作（如左侧源代码管理面板的 `同步更改`、`推送`、`拉取`）都会自动通过 SSH 进行，不再需要你输入 GitHub 的用户名和密码了。
+
+
+## 配置新的仓库
+
+1. 本地已有仓库：
+    - 在github上创建新仓库，不要创建任何文件，保持仓库为空
+    - 添加远程仓库 origin（如果之前没有）
+
+        `git remote add origin git@github.com:minzi9102/ros2_jazzy_learning_journey.git`
+    - 推送本地代码到 GitHub
+
+        `git push -u origin main`
+
+        
