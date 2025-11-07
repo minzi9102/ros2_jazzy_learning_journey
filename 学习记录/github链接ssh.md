@@ -132,8 +132,8 @@
     - 添加远程仓库 origin（如果之前没有）
 
         `git remote add origin git@github.com:minzi9102/ros2_jazzy_learning_journey.git`
+        
     - 推送本地代码到 GitHub
 
         `git push -u origin main`
 
-        
