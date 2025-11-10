@@ -69,7 +69,9 @@ def main():
     ###########################################################################
 
     # set plan start state using predefined state
-    ur_manipulator.set_start_state(configuration_name="up")
+    # ur_manipulator.set_start_state(configuration_name="up")
+    ur_manipulator.set_start_state_to_current_state()
+
 
     # set pose goal using predefined state
     ur_manipulator.set_goal_state(configuration_name="test_configuration")
@@ -111,12 +113,17 @@ def main():
     pose_goal = PoseStamped()
     pose_goal.header.frame_id = "base_link"
     pose_goal.pose.orientation.w = 1.0
-    pose_goal.pose.position.x = 0.28
-    pose_goal.pose.position.y = -0.1
+    pose_goal.pose.position.x = -0.1
+    pose_goal.pose.position.y = 0.3
     pose_goal.pose.position.z = 0.4
     ur_manipulator.set_goal_state(pose_stamped_msg=pose_goal, pose_link="tool0")
+
+    # 从"ur_manipulator"命名空间创建参数对象
+    plan_params = PlanRequestParameters(ur, "ompl_rrt_star")
+
     plan_and_execute(
         ur, ur_manipulator, logger,
+        single_plan_parameters=plan_params,
         sleep_time=3.0
     )
 

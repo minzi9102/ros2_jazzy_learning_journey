@@ -42,4 +42,14 @@ chomp_planner:
     max_acceleration_scaling_factor: 1.0
     planning_time: 1.5
 
-
+# =========================================================================
+# 新增：RRTstar 配置（最短路径优化）
+# =========================================================================
+ompl_rrt_star:
+  plan_request_params:
+    planning_attempts: 1
+    planning_pipeline: ompl  # 使用OMPL管道（必须已启用）
+    planner_id: "RRTstar"    # 必须与ompl_planning.yaml中的定义严格匹配
+    max_velocity_scaling_factor: 0.5  # 适当降低速度保证稳定性
+    max_acceleration_scaling_factor: 0.5
+    planning_time: 10.0      # 关键：RRT*需要更多时间进行优化
