@@ -45,6 +45,7 @@ def launch_setup(context):
     
         .moveit_cpp(
             file_path=get_package_share_directory("motion_planning_py")#<- 可以修改为FindPackageShare
+            # + "/config/motion_planning_python_api_tutorial.yaml"
             + "/config/motion_planning_python_api_tutorial.yaml"
         )
         .to_moveit_configs()
@@ -56,12 +57,26 @@ def launch_setup(context):
         executable=example_file,
         output="both",
         parameters=[moveit_config.to_dict()],
-        on_exit=Shutdown(),  # ⭐ 关键：节点退出时关闭整个 launch
+        # on_exit=Shutdown(),  # ⭐ 关键：节点退出时关闭整个 launch
+    )
+
+    rviz_node = Node(
+    package="rviz2",
+    executable="rviz2",
+    name="rviz2",
+    output="log",
+    arguments=["-d", get_package_share_directory("motion_planning_py") + "/config/visual.rviz"],
+    parameters=[
+        moveit_config.to_dict(),
+        {"use_sim_time": True}  # 如果使用 mock hardware
+    ]
     )
 
     nodes_to_start = [
+        rviz_node,
         static_tf,
         moveit_py_node,
+        
     ]
 
     return nodes_to_start
@@ -103,7 +118,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
         "example_file",
-        default_value="motion_planning_python_api_tutorial.py",
+        default_value="motion_planning_python_api_planning_scene.py",
         description="Python API tutorial file name",
     )
     )

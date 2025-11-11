@@ -8,10 +8,12 @@ import rclpy
 from rclpy.logging import get_logger
 
 from moveit.planning import MoveItPy
+from moveit_visual_tools import MoveItVisualTools
 
 from geometry_msgs.msg import Pose
 from moveit_msgs.msg import CollisionObject
 from shape_msgs.msg import SolidPrimitive
+from moveit.core.planning_scene import PlanningScene
 
 
 def plan_and_execute(
@@ -19,6 +21,7 @@ def plan_and_execute(
     planning_component,
     logger,
     sleep_time=0.0,
+    step_name="",
 ):
     """Helper function to plan and execute a motion."""
     # plan to goal
@@ -92,8 +95,8 @@ def main():
     ###################################################################
 
     add_collision_objects(planning_scene_monitor)
-    ur_manipulator.set_start_state(configuration_name="home")
-    ur_manipulator.set_goal_state(configuration_name="up")
+    ur_manipulator.set_start_state(configuration_name="up")
+    ur_manipulator.set_goal_state(configuration_name="test_configuration")
     plan_and_execute(ur, ur_manipulator, logger, sleep_time=3.0)
 
     ###################################################################
@@ -136,7 +139,7 @@ def main():
         scene.current_state.update()
 
     ur_manipulator.set_start_state_to_current_state()
-    ur_manipulator.set_goal_state(configuration_name="home")
+    ur_manipulator.set_goal_state(configuration_name="up")
     plan_and_execute(ur, ur_manipulator, logger, sleep_time=3.0)
 
 

@@ -22,6 +22,7 @@
   <exec_depend>geometry-msgs</exec_depend> <!-- PoseStamped -->
   <exec_depend>moveit-msgs</exec_depend> <!-- MoveIt 服务接口 -->
   <exec_depend>sensor-msgs</exec_depend> <!-- JointState 等 -->
+  <exec_depend>moveit_visual_tools</exec_depend>
 
   <exec_depend>ros2launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
