@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>motion_planning_py</name>
+  <name>ur_moveit_cpp</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="chenmj75@mail2.sysu.edu.cn">root</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
   <depend>controller_manager</depend>
   <depend>ur_robot_driver</depend>
   <depend>ur_description</depend>
@@ -16,24 +17,20 @@
   <depend>tf2_ros</depend>
   <depend>rviz_visual_tools</depend>
 
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>moveit-py</exec_depend>  <!-- 关键：提供 MoveItPy -->
-  <exec_depend>moveit-core</exec_depend> <!-- 提供 RobotState 等 -->
-  <exec_depend>moveit-planning</exec_depend> <!-- 提供 MultiPipelinePlanRequestParameters -->
-  <exec_depend>geometry-msgs</exec_depend> <!-- PoseStamped -->
-  <exec_depend>moveit-msgs</exec_depend> <!-- MoveIt 服务接口 -->
-  <exec_depend>sensor-msgs</exec_depend> <!-- JointState 等 -->
+  <depend>rclcpp</depend>
+  <depend>moveit</depend>
+  <depend>moveit_visual_tools</depend>
+  <depend>geometry_msgs</depend>
+  <depend>moveit_msgs</depend>
+  <depend>shape_msgs</depend>
+  <depend>tf2_eigen</depend>
 
-
-  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
 
   <exec_depend>ur_msgs</exec_depend>
   <exec_depend>control_msgs</exec_depend>
   <exec_depend>trajectory_msgs</exec_depend>
-
-  <!-- URDF 解析依赖 -->
-  <exec_depend>xacro</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

@@ -108,9 +108,9 @@
 
   ```
   ros2 launch ur_calibration calibration_correction.launch.py \
-  robot_ip:=<robot_ip> target_filename:="my_robot_calibration.yaml"
+  robot_ip:=<robot_ip> target_filename:="ur3_calibration.yaml"
   ```
-  结果是在当前文件夹下创建一个`my_robot_calibration.yaml`文件，记下这个文件的**绝对路径**，后续要用
+  结果是在当前文件夹下创建一个`ur3_calibration.yaml`文件，记下这个文件的**绝对路径**，后续要用
 
   ![2025-10-1-154757.png](assets/总结1：ros2正确连接ur机械臂/2025-10-1-154757.png)
 
@@ -127,6 +127,13 @@
       launch_rviz:=false
       reverse_ip:=192.168.56.1 \
       launch_rviz:=false
+  ros2 launch ur_robot_driver ur_control.launch.py \
+      ur_type:=ur3 \
+      robot_ip:=192.168.56.101 \
+      kinematics_params_file:="/ROS2jazzy/ur3_calibration.yaml" \
+      reverse_ip:=192.168.56.1 \
+      launch_rviz:=false
+      
   ```
 
   - 参数说明

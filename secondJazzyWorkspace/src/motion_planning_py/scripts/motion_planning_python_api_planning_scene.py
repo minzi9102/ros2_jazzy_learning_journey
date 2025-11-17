@@ -8,7 +8,6 @@ import rclpy
 from rclpy.logging import get_logger
 
 from moveit.planning import MoveItPy
-from moveit_visual_tools import MoveItVisualTools
 
 from geometry_msgs.msg import Pose
 from moveit_msgs.msg import CollisionObject
@@ -21,7 +20,6 @@ def plan_and_execute(
     planning_component,
     logger,
     sleep_time=0.0,
-    step_name="",
 ):
     """Helper function to plan and execute a motion."""
     # plan to goal
